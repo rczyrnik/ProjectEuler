@@ -42,7 +42,7 @@ def find_length(denom):
 if __name__ == "__main__":
     num = int(sys.argv[1])
 
-    with open("E026_Primes.txt") as f:
+    with open("PrimesThreeDigits.txt") as f:
         data = f.read()
     primes = [int(x) for x in data.split(", ")]
 
