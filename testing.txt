@@ -1,5 +1,8 @@
 Instructions for GitHub
 
 1) git add *
-2) git commit -m message
-3) git push -u origin master
+2) git status
+3) git commit -m message
+4) git push
+
+(git push -u origin master?)
