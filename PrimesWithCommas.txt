@@ -1,0 +1,5 @@
+Reading data with commas:
+
+    with open("PrimesToOneMillion.txt") as f:
+        data = f.read()
+    primes = [x.strip('\n') for x in data.split(',')]
