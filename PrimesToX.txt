@@ -1,0 +1,13 @@
+Primes to X
+
+returns the primes up to a number
+
+def primes_to_x(x):
+    primes =[]
+    with open("PrimesToTenMillion.txt") as f:
+        data = f.read()
+        for n in data.split():
+            if int(n) > x:
+                return primes
+            primes.append(int(n))
+    return False

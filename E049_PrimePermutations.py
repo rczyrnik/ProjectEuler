@@ -23,8 +23,8 @@ if __name__ == "__main__":
         sort = ''.join(sorted(x))
         my_dic[sort].append(x)
     # print(my_dic)
-
+    which = 1
     for key, value in my_dic.items():
-        if len(value) > 3:
+        if len(value)>which+1 and str(int(value[which]) + 3330) in value and str(int(value[which]) + 6660) in value:
             # and int(value[2])-int(value[1]) == int(value[1])-int(value[0]):
-            print(key, value)
+            print(str(int(value[which])) + str(int(value[which]) + 3330) + str(int(value[which]) + 6660))
