@@ -21,45 +21,36 @@ def primes_to_x(x):
             p.append(int(n))
     return False
 
-def check_for_prime(my_dic):
-    for key, value in my_dic.items():
-        if value in primes:
-            return value
-    return False
-
 if __name__ == "__main__":
 
-    primes = primes_to_x(1000000)
+    max_prime = 1000000
 
-    d = {}
-    for p in primes:
-        d[p] = p
+    primes = primes_to_x(max_prime)
+    # print(len(primes))
+    prime_set = {x for x in primes}
+
+    # # starting at 2
+    # prime_sum = 5
+    # for n in range(2, len(primes)-2, 2):
+    #     prime_sum += primes[n]+primes[n+1]
+    #     # print("previous sum + {} + {} = {}".format(primes[n], primes[n+1], prime_sum))
+    #     if prime_sum in primes:
+    #         print(n, prime_sum, " yay")
+
+    # starting at nth prime after 2
+    n = 9
+    prime_sum = primes[n]
+    for n in range(n+1, len(primes)-2, 2):
+        prime_sum += primes[n]+primes[n+1]
+        # print("previous sum + {} + {} = {}".format(primes[n], primes[n+1], prime_sum))
+        if prime_sum in prime_set:
+            print(n, prime_sum, " yay")
+    print(prime_sum)
 
 
-    for c in range(1, 2000):                     # adding c primes
-        for n in range(0, 100):                 # cycle through first 100 primes
-            d[primes[n]] += primes[n+c]         # add cth prime after nth prime
-
-        if not check_for_prime(d):
-            print(c+1)
-            print()
-
-
-    #
-    # for c in range(0, 6):
-    #
-    # d = {}
-    # for n in range(0, len(primes)-c):
-    #     d[primes[n]] = primes[n]
-    #     s = 0
-    #     for x in range(1, c):
-    #         d[primes[n]] += primes[n+x]
-    #     if d[primes[n]] in primes:
-    #         print(primes[n], d[primes[n]])
-
-    # d = {}
-    #
-    # for n in range(0, len(primes1)):
-    #
-    # for p in primes1:
-    #     d[p] =
+    '''
+    n = 0   534 958577
+    n = 1   524 920291
+    n = 2   539 978037
+    n = 3   544 997651
+    '''
