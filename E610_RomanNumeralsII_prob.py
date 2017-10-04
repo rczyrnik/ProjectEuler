@@ -33,9 +33,26 @@ import random
 from collections import defaultdict
 
 
+def which_letter(n):
+    if n < 15:
+        return 'I'
+    elif n < 29:
+        return 'V'
+    elif n < 43:
+        return 'X'
+    elif n < 57:
+        return 'L'
+    elif n < 71:
+        return 'C'
+    elif n < 85:
+        return 'D'
+    elif n < 99:
+        return 'M'
+    else:
+        return '#'
+
 def roman_to_arabic(roman):
         key = {'I':1, 'V':5, 'X':10, 'L':50, 'C':100, 'D':500, 'M':1000}
-
         roman = roman.replace('IV', 'IIII')
         roman = roman.replace('IX', 'VIIII')
         roman = roman.replace('XL', 'XXXX')
@@ -47,9 +64,6 @@ def roman_to_arabic(roman):
         for letter in roman:
             arabic += key[letter]
         return arabic
-
-
-
 # ['I', 'V', 'X', 'L', 'C', 'D', 'M', '#']
 def path(initial, initial_p):
     possies = 0
@@ -72,25 +86,39 @@ if __name__ == "__main__":
 
 # M{0,30}
 
-    pattern = '^M{0,40}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$'
-        # from Dive Into Python 3
-    n = set()
-    path("", 1)
+    pattern = '^M{0,30}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$'
+    #     # from Dive Into Python 3
+    # n = set()
+    # path("", 1)
     # print(n)
 
-    sum_p = 0
-    sum_v = 0
-    for x, y in n:
-        a = roman_to_arabic(x)
-        # if x == "DXXIX":
-            # print("{0} ({1}) with probability {2}, adding {3}".format(x, a, y, y*a))
-        sum_p += y
-        sum_v += a*y
+    # sum_p = 0
+    # sum_v = 0
+    # for x, y in n:
+    #     a = roman_to_arabic(x)
+    #     if x == "DXXIX":
+    #         print("{0} ({1}) with probability {2}, adding {3}".format(x, a, y, y*a))
+    #     sum_p += y
+    #     sum_v += a
     # print(sum_p)
-    print(sum_v)
+    # print(sum_v/len(n))
 
 
+    # BRUTE FORCE IS NOT STRONG ENOUGH ... YET
+    my_sum = 0
+    for n in range(1, 1000):
+        letter = ''
+        roman = ''
+        while letter != "#":
+            letter = which_letter(random.randrange(1, 101))
+            if re.search(pattern, roman+letter):
+                roman += letter
 
+        my_sum += roman_to_arabic(roman)
+        print(roman, roman_to_arabic(roman))
+        if n%10000 == 0:
+            print(my_sum/n)
+    print(my_sum/n)
 
 
 
@@ -204,23 +232,3 @@ if __name__ == "__main__":
 #     if number >= 1000: thousand = "M" * (number // 1000)
 #
 #     return thousand + hundred + ten + one
-
-
-#
-# def which_letter(n):
-#     if n < 15:
-#         return 'I'
-#     elif n < 29:
-#         return 'V'
-#     elif n < 43:
-#         return 'X'
-#     elif n < 57:
-#         return 'L'
-#     elif n < 71:
-#         return 'C'
-#     elif n < 85:
-#         return 'D'
-#     elif n < 99:
-#         return 'M'
-#     else:
-#         return '#'
