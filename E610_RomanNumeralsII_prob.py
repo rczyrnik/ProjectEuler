@@ -113,7 +113,6 @@ if __name__ == "__main__":
             letter = which_letter(random.randrange(1, 101))
             if re.search(pattern, roman+letter):
                 roman += letter
-
         my_sum += roman_to_arabic(roman)
         print(roman, roman_to_arabic(roman))
         if n%10000 == 0:
