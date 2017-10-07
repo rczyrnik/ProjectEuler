@@ -1,3 +1,9 @@
+'''
+import PrimesToX as PTX
+primes = PTX.primes_to_x(1000000)
+'''
+
+
 def primes_to_x(x, frmt = "set"):
     if frmt == "list":
         p =[]

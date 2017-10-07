@@ -20,3 +20,34 @@ In the first one-thousand expansions, how many fractions contain a
 numerator with more digits than denominator?
 
 '''
+
+from fractions import Fraction
+import math
+import sys
+
+sys.setrecursionlimit(1009)
+
+def frac_sum(position):
+    if position == len(two_list)-1:
+        return Fraction(1, 2)
+    else:
+        return Fraction(1, 2+frac_sum(position+1))
+
+
+if __name__ == "__main__":
+
+    a = Fraction(1,1)
+    b = Fraction(1,2)
+    count = 0
+    # print(1, a+b)
+    for n in range(2, 1001):
+        b = 1 / (2+b)
+
+        f = a+b
+        # print(int(math.log(f.numerator,10)),int(math.log(f.denominator, 10)))
+
+        if int(math.log(f.numerator,10)) != int(math.log(f.denominator, 10)):
+            count += 1
+            print(n, a+b)
+
+    print(count)
